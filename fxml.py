@@ -83,7 +83,6 @@ def needs_indent(tag):
     return needs_indent
 
 def are_matching(open_tag, close_tag):
-    # print(open_tag, close_tag)
     return open_tag.type == close_tag.type\
             and is_closing_tag(close_tag) and not is_closing_tag(open_tag)
 
@@ -101,7 +100,7 @@ def is_inline_tag(first_tag, second_tag, text):
 
     return is_inline_tag
 
-def assemble1(content):
+def assemble(content):
     tag_stack = deque()
 
     tags = [tag for tag in tag_iter(content)]
@@ -145,7 +144,7 @@ if __name__ == "__main__":
         content = f.read()
 
     content.replace(ERROR_BANNER, "")
-    content = assemble1(content)
+    content = assemble(content)
 
     print(content)
     sys.exit(0)
