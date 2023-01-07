@@ -75,8 +75,9 @@ def needs_indent(tag):
     needs_indent = needs_indent and not is_comment(tag)
     needs_indent = needs_indent and not is_taglib(tag)
     needs_indent = needs_indent and not tag.type == "br"
-    needs_indent = needs_indent and not tag.type == "b"
-    needs_indent = needs_indent and not tag.type == "i"
+    needs_indent = needs_indent and not tag.type == "meta"
+    needs_indent = needs_indent and not tag.type == "link"
+    needs_indent = needs_indent and not tag.type == "img"
     needs_indent = needs_indent and not is_self_closed(tag)
     needs_indent = needs_indent and not is_meta_info(tag)
     needs_indent = needs_indent and not is_jsp(tag)
@@ -93,6 +94,9 @@ def is_inline_tag(first_tag, second_tag, text):
     is_inline_tag = is_inline_tag or second_tag.type == "option"
     is_inline_tag = is_inline_tag or second_tag.type == "td"
     is_inline_tag = is_inline_tag or second_tag.type == "th"
+    is_inline_tag = is_inline_tag or second_tag.type == "a"
+    is_inline_tag = is_inline_tag or second_tag.type == "b"
+    is_inline_tag = is_inline_tag or second_tag.type == "i"
     is_inline_tag = is_inline_tag or second_tag.type == "title"
     is_inline_tag = is_inline_tag or second_tag.type == "label"
     is_inline_tag = is_inline_tag or second_tag.type == "span"
